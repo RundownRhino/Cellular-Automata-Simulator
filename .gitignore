@@ -1,4 +1,6 @@
 /.idea
 /output
-/__pycache__
+*__pycache__*
 /launchprogram.py
+/dist
+*.egg-info/

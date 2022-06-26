@@ -1,0 +1,30 @@
+[tool.autopep8]
+max_line_length = 120
+
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gameoflife-ndimage"
+version = "0.1.2"
+description = "Quick simulation of arbitrary rulesets for nearest-neighbour cellular automata. Uses scipy.ndimage.correlate, and can export videos via ffmpeg-python."
+readme = "README.md"
+authors = [{ name = "RundownRhino"}]
+license = { file = "LICENSE" }
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+keywords = ["gameoflife", "cellular", "automata", "scipy"]
+# Unsure about exact dependency versions required; please report if it doesn't work on some versions:
+dependencies = [
+    "numpy",
+    "scipy",
+    "ffmpeg-python",
+    "Pillow"
+]
+
+[project.urls]
+Source = "https://github.com/RundownRhino/Cellular-Automata-Simulator"

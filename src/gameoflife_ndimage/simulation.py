@@ -6,7 +6,7 @@ import numpy as np
 from PIL import Image
 from scipy.ndimage import correlate
 
-from video import Recorder
+from .video import Recorder
 
 # The type to use for neighbour counting. For 2D and neasest neighbours only, a byte should be enough.
 COUNTER_TYPE = np.uint8
