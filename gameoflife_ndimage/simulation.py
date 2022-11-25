@@ -133,7 +133,7 @@ class State2D:
         if draw_params.resize_factor == 1:
             return img
         newsize = (img.size[0] * draw_params.resize_factor, img.size[1] * draw_params.resize_factor)
-        return img.resize(size=newsize, resample=Image.NEAREST)
+        return img.resize(size=newsize, resample=Image.Resampling.NEAREST)
 
     @classmethod
     def random(cls, rules: Rules2D, size: Tuple[int, int], seed: int | None = None) -> "State2D":
