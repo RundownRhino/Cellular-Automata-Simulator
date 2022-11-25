@@ -7,7 +7,7 @@ line_length = 120
 
 [tool.poetry]
 name = "gameoflife-ndimage"
-version = "0.1.2"
+version = "0.1.3"
 description = "Quick simulation of arbitrary rulesets for nearest-neighbour cellular automata. Uses scipy.ndimage.correlate, and can export videos via ffmpeg-python."
 authors = ["RundownRhino <52856631+RundownRhino@users.noreply.github.com>"]
 license = "MIT"
