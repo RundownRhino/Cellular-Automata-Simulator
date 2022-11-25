@@ -1,6 +1,6 @@
 import warnings
 from dataclasses import dataclass
-from typing import List, Tuple, Iterable
+from typing import Iterable, List, Tuple
 
 import numpy as np
 from PIL import Image
@@ -78,7 +78,8 @@ class DrawParams:
                 warnings.warn(
                     "[DrawParams.__post_init__] Received an array of floating-point color with a max below 1. "
                     "This will be interpreted as black - if you're using floating-point colors from "
-                    "0 to 1, rescale them to [0,255].")
+                    "0 to 1, rescale them to [0,255]."
+                )
         self.alive_color = alive.astype(np.uint8)
         self.dead_color = dead.astype(np.uint8)
 
