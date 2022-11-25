@@ -86,6 +86,7 @@ class DrawParams:
 
 @dataclass
 class State2D:
+    # boolean 2d array
     field: np.ndarray
     rules: Rules2D
 
@@ -135,8 +136,8 @@ class State2D:
         return img.resize(size=newsize, resample=Image.NEAREST)
 
     @classmethod
-    def random(cls, rules: Rules2D, size: Tuple[int, int]) -> "State2D":
-        rng = np.random.default_rng()
+    def random(cls, rules: Rules2D, size: Tuple[int, int], seed: int | None = None) -> "State2D":
+        rng = np.random.default_rng(seed)
         field = rng.integers(0, 2, size=size, dtype=bool)
         return cls(field, rules)
 
@@ -149,12 +150,27 @@ class State2D:
         :return: Yields a total of ticks+1 states.
         """
         if ticks < 0:
-            raise ValueError
+            raise ValueError(ticks)
         cur_state = self
         yield cur_state
-        for tick in range(ticks):
+        for _ in range(ticks):
             cur_state = cur_state.step()
             yield cur_state
+
+    def after(self, ticks: int) -> "State2D":
+        """
+        Run the automaton from this state, returning the final state.
+
+        :param ticks: Ticks to simulate. Must be non-negative; zero does nothing and returns the current state.
+
+        :return: The final state.
+        """
+        if ticks < 0:
+            raise ValueError(ticks)
+        cur = self
+        for _ in range(ticks):
+            cur = cur.step()
+        return cur
 
     def run_and_record(self, ticks: int, draw_params: DrawParams, recorder: Recorder) -> "State2D":
         """

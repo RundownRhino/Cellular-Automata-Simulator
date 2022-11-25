@@ -31,3 +31,9 @@ isort = "^5.10.1"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+filterwarnings = [
+    # seems to be something pytest-internal - I don't get it when calling the same test function manually
+    'ignore:the imp module is deprecated:DeprecationWarning',
+]

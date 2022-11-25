@@ -13,7 +13,7 @@ class Recorder:
         self,
         framerate: int,
         input_wh: Tuple[int, int],
-        output_path,
+        output_path: str | pathlib.Path,
         input_pixel_format: str = "rgb24",
         output_vcodec: str = "libx264",
         ffmpeg_input_kwargs: Optional[dict] = None,
